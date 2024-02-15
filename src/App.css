@@ -1,0 +1,37 @@
+:root{
+    --light-text-color: #fff;
+    --dark-bg-color: #333333;
+    --link-hover: #19C37D;
+}
+
+.sidebar{
+    background-color: var(--dark-bg-color);
+    width: auto;
+    height: calc(100vh - 56px);
+    padding-left: 0% !important;
+}
+
+.sidebar a,.navbar-main a{
+    color:var(--light-text-color);
+}
+
+.sidebar a.active,.navbar-main a.active{
+   color:var(--link-hover);
+}
+
+.sidebar .nav-link span{
+    padding-left: 15px;
+}
+
+.container-main{
+    padding-left: 15%;
+}
+
+.navbar-main{
+    background-color: var(--dark-bg-color);
+    color:var(--light-text-color);
+}
+
+.main-row{
+    padding-left: 0px !important;
+}
