@@ -4,7 +4,7 @@ import CommonPoseWebcam from "./commonPoseDetection";
 function ArmRaiseWebcam(){
     
     return(
-        <CommonPoseWebcam exerciseTodo={armRaise} repsTodo={10} resultToUnderstand={"All"} />
+        <CommonPoseWebcam exerciseTodo={armRaise} repsTodo={10} resultToUnderstand={"All"} delay={1000} />
     )
 }
 

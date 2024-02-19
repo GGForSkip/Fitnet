@@ -5,12 +5,12 @@ import { useState,useRef,useCallback,useEffect } from "react";
 import { Alert } from "react-bootstrap";
 import { detect,createPosenet } from "../posenetUtilities";
 
-function CommonPoseWebcam({ repsTodo=10,exerciseTodo=()=>{},resultToUnderstand="All"}){
+function CommonPoseWebcam({ repsTodo=10,exerciseTodo=()=>{},resultToUnderstand="All",delay=3000}){
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
     const [armRaiseCount,setArmRaiseCount] = useState(0);
     const [showSuccess,setShowSuccess] = useState(false);
-    let timer;
+    
 
     const poseDetectorDelegate=useCallback(async function(pose){
         var res=await exerciseTodo(pose);
@@ -19,28 +19,30 @@ function CommonPoseWebcam({ repsTodo=10,exerciseTodo=()=>{},resultToUnderstand="
                 setArmRaiseCount(armRaiseCount+1);
             }
         }
-    });
+    },[]);
 
-    const runPosenet = async () =>{
-        const net=await createPosenet();
-        timer=!timer && setInterval(()=>{
-          detect(net,webcamRef,canvasRef,poseDetectorDelegate);
-        },3000);
-    
-        if(armRaiseCount > repsTodo){
-            clearInterval(timer);
-            setShowSuccess(true);
-        } 
-    }
+   
     
     useEffect(()=>{
+        let timer;
+        const runPosenet = async () =>{
+            const net=await createPosenet();
+            timer=!timer && setInterval(()=>{
+              detect(net,webcamRef,canvasRef,poseDetectorDelegate);
+            },delay);
+        
+            if(armRaiseCount > repsTodo){
+                clearInterval(timer);
+                setShowSuccess(true);
+            } 
+        }
         const runPosenetteEffect=async ()=>{
           runPosenet();
         };
         runPosenetteEffect();
     
         return () => clearInterval(timer);
-    },[armRaiseCount,showSuccess]);
+    },[armRaiseCount, showSuccess]);
 
 
     return(

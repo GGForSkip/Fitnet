@@ -2,8 +2,6 @@ import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import styled from 'styled-components';
 
-const minuteSeconds = 60;
-
 const TimerDiv = styled.div`
     font-size: 32px;
 `;
@@ -23,24 +21,28 @@ const renderTime = (dimension, time) => {
   );
 };
 
-const getTimeSeconds = (time) => (minuteSeconds - time) | 0;
 
-export default function CountdownPro() {
-  const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
-  const endTime = stratTime + 243248; // use UNIX timestamp in seconds
+export default function CountdownPro({onFinishCounter,seconds=60}) {
 
-  const remainingTime = endTime - stratTime;
+  const getTimeSeconds = (time) => (seconds - time) | 0;
+
+  if(!onFinishCounter || typeof(onFinishCounter)!="function"){
+    onFinishCounter=()=>{
+        return {
+         shouldRepeat: true,
+          delay: 1.5
+        } // repeat animation in 1.5 seconds
+    }
+  }
+
 
   return (
       <CountdownCircleTimer
         {...timerProps}
         colors="#218380"
-        duration={minuteSeconds}
-        initialRemainingTime={remainingTime % minuteSeconds}
-        onComplete={(totalElapsedTime) => ({
-          shouldRepeat: remainingTime - totalElapsedTime > 0
-        })}
-        
+        duration={seconds}
+        initialRemainingTime={seconds}
+        onComplete={onFinishCounter} 
       >
         {({ elapsedTime, color }) => (
           <span style={{ color }}>

@@ -4,14 +4,14 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Logo from './Logo';
 
 function NavbarDefault() {
   return (
-    <Navbar expand="lg" className="navbar-main">
+    <Navbar expand="lg" className="navbar-main" sticky='top'>
       <Container fluid>
         <Navbar.Brand href="/home">
-          <FontAwesomeIcon icon={faSpa} className='fa-lg'></FontAwesomeIcon>
-          <span> FitAndEat </span>
+          <Logo></Logo>
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">

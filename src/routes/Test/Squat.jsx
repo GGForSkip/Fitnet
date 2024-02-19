@@ -1,7 +1,7 @@
 import { useEffect,useRef } from "react";
-import { drawCanvas,createPosenet } from "../posenetUtilities";
+import { drawCanvas,createPosenet } from "../../posenetUtilities";
 import { image } from "@tensorflow/tfjs";
-
+import { squat } from "../../poses";
 export const LegRaiseTestPage=()=>{
     const imageRef = useRef(null);
     const canvasRef = useRef(null);
@@ -9,13 +9,14 @@ export const LegRaiseTestPage=()=>{
     const runPosenet = async () =>{
         const net=await createPosenet();
         console.log(imageRef)
-        debugger
+        
         if(imageRef.current){
             const image= imageRef.current;
             const imageWidth= imageRef.current.width;
             const imageHeight= imageRef.current.height;
             const pose=await net.estimateSinglePose(image);
             console.log(pose);
+            squat(pose);
             drawCanvas(pose,image,imageWidth,imageHeight,canvasRef);
           }
     }

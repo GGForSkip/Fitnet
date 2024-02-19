@@ -1,4 +1,3 @@
-import react from 'react';
 import Nav from 'react-bootstrap/Nav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDumbbell, faHouse, faIdCard, faSquarePollVertical, faStopwatch20, faTableList } from '@fortawesome/free-solid-svg-icons';

@@ -27,9 +27,7 @@ import ToastContainer from 'react-bootstrap/ToastContainer';
     'Dark',
   ]*/
 
-function MessageToast({ position ='top-end',variant="Primary", body="Message Toast"}) {
-
-    const [show, setShow] = useState(true);
+function MessageToast({ position ='top-end',variant="Primary", body="Message Toast",show=false,onClose}) {
 
     return (
         
@@ -39,7 +37,7 @@ function MessageToast({ position ='top-end',variant="Primary", body="Message Toa
             style={{ zIndex: 1 }}
             >
             <Toast
-                onClose={() => setShow(false)} 
+                onClose={() => onClose()} 
                 show={show} 
                 delay={3000} 
                 autohide

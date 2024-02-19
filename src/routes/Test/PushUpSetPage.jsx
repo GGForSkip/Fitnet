@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Webcam from 'react-webcam';
-import { createPosenet,detect } from './../posenetUtilities';
-import { armRaise, legRaise, squats,pushup } from './../poses';
+import { createPosenet,detect } from '../../posenetUtilities';
+import { armRaise, legRaise, squats,pushup } from '../../poses';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Card from '@mui/material/Card';

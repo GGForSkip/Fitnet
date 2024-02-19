@@ -1,9 +1,9 @@
 import { useEffect,useRef } from "react";
-import { drawCanvas,createPosenet } from "../posenetUtilities";
+import { drawCanvas,createPosenet } from "../../posenetUtilities";
 import { image } from "@tensorflow/tfjs";
-import { pushup } from "../poses";
+import { squats } from "../../poses";
 
-export const PushUpTestPage=()=>{
+export const SquatTestPage=()=>{
     const imageRef = useRef(null);
     const canvasRef = useRef(null);
 
@@ -16,8 +16,8 @@ export const PushUpTestPage=()=>{
             const imageWidth= imageRef.current.width;
             const imageHeight= imageRef.current.height;
             const pose=await net.estimateSinglePose(image);
-            pushup(pose);
             console.log(pose);
+            squats(pose);
             drawCanvas(pose,image,imageWidth,imageHeight,canvasRef);
           }
     }
@@ -27,11 +27,11 @@ export const PushUpTestPage=()=>{
             runPosenet();
           };
           runPosenetteEffect();
-    },[]);
+    })
 
     return (
         <>
-            <img src="/Pose/pushup2.webp"
+            <img src="/Pose/squat.jpg"
                 style={{
                     position:'absolute',
                     marginLeft: 'auto',
@@ -64,4 +64,4 @@ export const PushUpTestPage=()=>{
     )
 }
 
-export default PushUpTestPage;
+export default SquatTestPage;

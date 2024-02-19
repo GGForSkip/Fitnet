@@ -2,6 +2,8 @@
     --light-text-color: #fff;
     --dark-bg-color: #333333;
     --link-hover: #19C37D;
+    --red-text:  rgb(168, 19, 41);
+    --link-text:  #ffc107;
 }
 
 .sidebar{
@@ -9,6 +11,7 @@
     width: auto;
     height: calc(100vh - 56px);
     padding-left: 0% !important;
+    position: fixed
 }
 
 .sidebar a,.navbar-main a{
@@ -34,4 +37,25 @@
 
 .main-row{
     padding-left: 0px !important;
+}
+
+.red-text{
+    color: var(--red-text) !important;
+}
+
+.red-text-upper{
+    color: var(--red-text) !important;
+    text-transform: uppercase;
+}
+
+.email-span{
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--link-text)
+}
+
+.link{
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--link-text)
 }
